@@ -8,9 +8,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedLibrary", "SharedLibrary\SharedLibrary.csproj", "{4AE42E7B-FF34-4E20-974E-CAB92684BDB4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CI", "CI", "{AA08CDC1-2691-4BAF-99FA-B17AE3AADBF6}"
-	ProjectSection(SolutionItems) = preProject
-		actions.yml = actions.yml
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
