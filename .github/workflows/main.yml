@@ -1,37 +1,43 @@
-name: 'Publish application'
-on: push
+name: Deploy to GitHub pages
+
+# Run workflow on every push to the master branch
+on:
+push:
+branches: [ master ]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-        # Checkout the code 
-        - uses: actions/checkout@v2
+deploy-to-github-pages:
+# Use Ubuntu-latest image to run steps on
+runs-on: ubuntu-latest
+steps:
+# Uses GitHub’s checkout action to check out code from the master branch
+– uses: actions/checkout@v2
 
-        # Install .NET Core SDK
-        - name: Setup .NET Core
-          uses: actions/setup-dotnet@v2
-          with:
-            dotnet-version: 6.x.x
+# Sets up .NET Core SDK 6.x
+– name: Setup .NET Core SDK
+uses: actions/setup-dotnet@v1
+with:
+dotnet-version:  6.x.x
 
-        # Run tests
-        - name: Test
-          run: dotnet test
+# Publishes the Blazor project to the release folder
+– name: Publish .NET Core Project
+run: dotnet publish BlazorGitHubPagesDemo.csproj -c Release -o release –nologo
 
-        # Generate the website
-        - name: Publish
-          run: dotnet publish DemoApp/DemoApp.csproj --configuration Release
+# Changes the base tag in index.html from ‘/’ to ‘BlazorGitHubPagesDemo’ to match the GitHub Pages repository subdirectory
+– name: Change base-tag in index.html from / to BlazorGitHubPagesDemo
+run: sed -i ‘s/<base href=”\/” \/>/<base href=”\/BlazorGitHubPagesDemo\/” \/>/g’ release/wwwroot/index.html
 
-        # Publish the website
-        - name: GitHub Pages action
-          if: ${{ github.ref == 'refs/heads/master' }} # Publish only when the push is on master
-          uses: peaceiris/actions-gh-pages@v3.8.0
-          with:
-            github_token: ${{ secrets.PUBLISH_TOKEN }}
-            publish_branch: gh-pages
-            publish_dir: bin/Release/netstandard2.1/publish/wwwroot
-            allow_empty_commit: false
-            keep_files: false
-            force_orphan: true
-            # TODO uncomment the following line if you have a custom domain name
-            # cname: demo.meziantou.net
+# Copy index.html to 404.html to serve the same file when a file is not found
+– name: copy index.html to 404.html
+run: cp release/wwwroot/index.html release/wwwroot/404.html
+
+# Add the .nojekyll file to tell GitHub pages to not treat this as a Jekyll project. (Allow files and folders starting with an underscore)
+– name: Add .nojekyll file
+run: touch release/wwwroot/.nojekyll
+
+– name: Commit wwwroot to GitHub pages
+uses: JamesIves/github-pages-deploy-action@3.7.1
+with:
+GITHUB_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+BRANCH: gh-pages
+FOLDER: release/wwwroot
