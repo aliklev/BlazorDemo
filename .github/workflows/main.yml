@@ -1,4 +1,4 @@
-ame: 'Deploy Blazor to GitHub Pages'
+name: 'Deploy Blazor to GitHub Pages'
 description: 'Build a Blazor Wasm application and deploy it to GitHub Pages.'
 inputs:
   project_path:
