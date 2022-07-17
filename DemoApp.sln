@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedLibrary", "SharedLibr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CI", "CI", "{AA08CDC1-2691-4BAF-99FA-B17AE3AADBF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsApp", "WinFormsApp\WinFormsApp.csproj", "{2F90E7FB-9F5D-44E6-8EFD-48672E669B82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsApp", "WinFormsApp\WinFormsApp.csproj", "{2F90E7FB-9F5D-44E6-8EFD-48672E669B82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiAppBlazor", "MauiAppBlazor\MauiAppBlazor.csproj", "{013EC13B-F511-450F-B404-979FF3998665}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,12 @@ Global
 		{2F90E7FB-9F5D-44E6-8EFD-48672E669B82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F90E7FB-9F5D-44E6-8EFD-48672E669B82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F90E7FB-9F5D-44E6-8EFD-48672E669B82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{013EC13B-F511-450F-B404-979FF3998665}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{013EC13B-F511-450F-B404-979FF3998665}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{013EC13B-F511-450F-B404-979FF3998665}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{013EC13B-F511-450F-B404-979FF3998665}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{013EC13B-F511-450F-B404-979FF3998665}.Release|Any CPU.Build.0 = Release|Any CPU
+		{013EC13B-F511-450F-B404-979FF3998665}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
